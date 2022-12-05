@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en"xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<a type="button" class="btn btn-warning" th:href="@{/create}"  >Create</a>
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Img</th>
+            <th>Age</th>
+            <th>Class</th>
+            <th>Function</th>
+            <th>Function</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="stu,loop :${student}">
+            <td th:text="${stu.id}"></td>
+            <td th:text="${stu.name}"></td>
+            <td><img th:src="${stu.img}" height="200px" width="250px"></td>
+            <td th:text="${stu.age}"></td>
+            <td th:text="${stu.classRoom.name}"></td>
+            <td><a type="button" class="btn btn-warning" th:href="@{/edit(id=${stu.id})}"  >Edit</a></td>
+            <td><a type="button" class="btn btn-danger" th:href="  @{/delete/{id}(id=${stu.id})} " >Delete</a></td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
+

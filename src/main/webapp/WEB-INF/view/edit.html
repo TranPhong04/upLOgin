@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<html lang="">
+<head>
+    <title>Title</title>
+</head>
+<body>
+<div align="center">
+    <form th:action="@{/update}" method="post" th:object="${student}">
+        <h1>Edit Student Information</h1>
+        <table>
+            <tr>
+                <td><input name="id" placeholder="Nhập id"  th:value="${student.id}" hidden></td>
+            </tr>
+            <tr>
+                <td>Nhập tên</td>
+                <td><input name="name" placeholder="Nhập tên" th:value="${student.name}"></td>
+            </tr>
+            <tr>
+                <td>Nhập đường dẫn ảnh</td>
+                <td><input name="img" placeholder="Nhập đường dẫn ảnh" th:value="${student.img}"></td>
+            </tr>
+            <tr>
+                <td>Nhập tuổi</td>
+                <td><input name="age" placeholder="Nhập tuổi" th:value="${student.age}"></td>
+            </tr>
+
+            <tr>
+                <td>Chọn lớp</td>
+                <td>
+                <select th:field="*{classRoom.id}">
+                    <option th:each="p,loop:${class}"  th:value="${p.id}" th:text="${p.name}"> </option>
+                </select>
+                </td>
+            </tr>
+
+        </table>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+</body>
+</html>
